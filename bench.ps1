@@ -21,6 +21,9 @@ for ($i = 1; $i -le $numberOfRuns; $i++) {
             $scoreLine = Get-Content -Path test.txt -TotalCount ($lineNumber + 1) | Select-Object -Last 1
             Add-Content -Path benchmarks.txt -Value "Run ${i}: $scoreLine"
             
+            # Display the score to the console.
+            Write-Host "Run ${i} Score: $scoreLine"
+            
             # Delete test.txt after extracting the score
             Remove-Item -Path test.txt
         } else {
@@ -32,3 +35,4 @@ for ($i = 1; $i -le $numberOfRuns; $i++) {
 }
 
 Write-Host "Benchmark(s) complete. Scores are saved in benchmarks.txt"
+
